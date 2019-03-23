@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cn.jx.pxc.pda.entity.DormitoryScoreInfo" table="tb_dormitory_score_info">
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		<property name="dormitoryIdScore" column="dormitory_id_score"/>
+		<property name="dormitoryScore" column="dormitory_score"/>
+		<property name="scoreDate" column="score_date"/>
+		<property name="scoreUsername" column="score_username"/>
+		<property name="remarks" column="remarks"/>
+	</class>
+</hibernate-mapping>

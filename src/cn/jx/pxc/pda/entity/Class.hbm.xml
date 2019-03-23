@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cn.jx.pxc.pda.entity.ClassInfo" table="tb_class_info">
+		<id name="classId" column="class_id">
+			<generator class="native"/>
+		</id>
+		<property name="className" column="class_name"/>
+		<property name="classTeacher" column="class_teacher"/>
+		<property name="classAcademic" column="class_academic"/>
+	</class>
+</hibernate-mapping>

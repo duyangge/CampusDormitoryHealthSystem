@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"/><!-- 处理编码 -->
+	<constant name="struts.devMode" value="true" /><!--启用开发者模式 （自动重新加载功能，每次修改属性或XML配置文件更改，应用程序不再需要重启才能生效） -->	
+	<package name="User" extends="struts-default" namespace="/">
+		
+		<!--注册拦截器  -->
+		<interceptors>
+			<interceptor name="loginInterceptor" class="cn.jx.pxc.pda.LoginInterceptor"></interceptor>
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor">
+					<param name="excludeMethods">login</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!--用户  -->
+		<action name="user_*" class="userInfoAction" method="{1}">
+			<interceptor-ref name="loginStack"/>
+			<result name="login">/login.jsp</result>
+			<result name="success" type="redirectAction">dormitoryScore_getAllDormitoryScore</result>
+			<allowed-methods>login,loginOut,modifyPassWord</allowed-methods>
+		</action>
+		
+		<!--寝室评分  -->
+		<action name="dormitoryScore_*" class="dormitoryScoreAction" method="{1}">
+			<interceptor-ref name="loginStack"/>
+			<result name="dorScoList">/index.jsp</result>
+			<result name="lookAverageScore">/index.jsp</result>
+			<allowed-methods>getAllDormitoryScore,selectConditionDormitoryScore,deleteDormitoryScore,updateDormitoryScore,addDormitoryScore,averageDormitoryScore</allowed-methods>
+		</action>
+	
+		
+	</package>
+</struts>
